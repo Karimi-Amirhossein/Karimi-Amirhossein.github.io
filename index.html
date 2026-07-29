@@ -392,7 +392,7 @@
         <div class="about-links">
           <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="mailto:amir.h.karimi.dev@gmail.com">Email ↗</a>
+          <a href="#" class="js-mail" data-mail="YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t">Email ↗</a>
         </div>
       </div>
     </div>
@@ -541,7 +541,7 @@
             <p class="lede">Open to Junior Backend Developer roles where reliability actually matters. I reply fast — reach out directly.</p>
           </div>
           <div class="contact-list">
-            <a href="mailto:amir.h.karimi.dev@gmail.com"><span>Email</span><span>amir.h.karimi.dev@gmail.com</span></a>
+            <a href="#" class="js-mail js-mail-full" data-mail="YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t"><span>Email</span><span class="js-mail-text">···</span></a>
             <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener"><span>LinkedIn</span><span>karimi-amirhossein</span></a>
             <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener"><span>GitHub</span><span>Karimi-Amirhossein</span></a>
           </div>
@@ -572,7 +572,7 @@
         <h4>Elsewhere</h4>
         <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:amir.h.karimi.dev@gmail.com">Email</a>
+        <a href="#" class="js-mail" data-mail="YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t">Email</a>
       </div>
     </div>
     <div class="fine-print">
@@ -668,7 +668,7 @@
     experience: () => `'Python Developer Intern @ Starview — geospatial data pipelines on AWS Lambda + S3'`,
     projects: () => `['Finance-Management API', 'E-Commerce REST API', 'Weather Report CLI'] — see #projects`,
     education: () => `'B.Sc. Computer Engineering, Politecnico di Torino — Dec 2026 (Expected)'`,
-    contact: () => `'amir.h.karimi.dev@gmail.com · github.com/Karimi-Amirhossein'`,
+    contact: () => `'${atob('YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t')} · github.com/Karimi-Amirhossein'`,
   };
 
   const runCommand = (raw) => {
@@ -707,6 +707,17 @@
   });
 
   document.querySelector('.term')?.addEventListener('click', () => termInput.focus());
+
+  // de-obfuscate email links (kept out of the raw HTML/source as plain text to cut down on scraper spam)
+  document.querySelectorAll('.js-mail').forEach(a => {
+    const email = atob(a.dataset.mail);
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.location.href = 'mailto:' + email;
+    });
+    const textSpan = a.querySelector('.js-mail-text');
+    if (textSpan) textSpan.textContent = email;
+  });
 </script>
 
 </body>
