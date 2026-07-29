@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amirhossein Karimi — Backend Developer</title>
+<meta name="description" content="Amirhossein Karimi — Python backend developer building Django APIs and serverless AWS data pipelines. Turin, Italy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f7f9;
+    --surface:#ffffff;
+    --surface-2:#eef0f4;
+    --ink:#13161c;
+    --ink-dim:#5b6472;
+    --border:#e3e6ec;
+    --accent:#3355e0;
+    --accent-2:#8b5cf6;
+    --accent-ink:#ffffff;
+    --accent-soft:#eaeeff;
+    --green:#1a9d5c;
+    --gradient:linear-gradient(135deg, var(--accent), var(--accent-2));
+    --shadow:0 1px 2px rgba(20,24,34,0.04), 0 8px 24px rgba(20,24,34,0.06);
+    --shadow-lg:0 4px 16px rgba(20,24,34,0.06), 0 20px 48px rgba(20,24,34,0.10);
+    --font-display:'Sora', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'JetBrains Mono', monospace;
+  }
+  html[data-theme="dark"]{
+    --bg:#0b0d12;
+    --surface:#12151c;
+    --surface-2:#181c25;
+    --ink:#eef0f4;
+    --ink-dim:#8b93a4;
+    --border:#232833;
+    --accent:#6c8bff;
+    --accent-ink:#0b0d12;
+    --accent-soft:#1a2140;
+    --green:#3ddc84;
+    --accent-2:#a78bfa;
+    --gradient:linear-gradient(135deg, var(--accent), var(--accent-2));
+    --shadow:0 1px 2px rgba(0,0,0,0.3), 0 12px 28px rgba(0,0,0,0.35);
+    --shadow-lg:0 4px 20px rgba(0,0,0,0.35), 0 24px 56px rgba(0,0,0,0.4);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family:var(--font-body); line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    transition:background .25s ease, color .25s ease;
+  }
+  a{color:inherit; text-decoration:none;}
+  ::selection{background:var(--accent); color:var(--accent-ink);}
+  img{max-width:100%; display:block;}
+
+  .wrap{max-width:1120px; margin:0 auto; padding:0 32px;}
+  @media (max-width:640px){.wrap{padding:0 20px;}}
+  section{padding:100px 0;}
+  @media (max-width:640px){section{padding:64px 0;}}
+
+  h1,h2,h3{font-family:var(--font-display); font-weight:600; letter-spacing:-0.015em;}
+
+  .eyebrow{
+    font-family:var(--font-mono); font-size:12.5px; letter-spacing:0.08em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:14px; font-weight:500;
+  }
+
+  /* ---------- NAV ---------- */
+  header.site-nav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    background:color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-row{display:flex; align-items:center; justify-content:space-between; height:66px;}
+  .logo{font-family:var(--font-display); font-weight:700; font-size:15.5px; color:var(--ink); display:flex; align-items:center; gap:9px;}
+  .logo .mark{width:26px; height:26px; border-radius:7px; background:var(--accent); color:var(--accent-ink); font-family:var(--font-mono); font-size:12px; font-weight:600; display:flex; align-items:center; justify-content:center;}
+  nav.links{display:flex; gap:28px;}
+  nav.links a{font-size:13.5px; color:var(--ink-dim); transition:color .2s ease; position:relative; padding-bottom:4px;}
+  nav.links a:hover{color:var(--ink);}
+  nav.links a.active{color:var(--ink);}
+  nav.links a.active::after{
+    content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px; border-radius:2px;
+    background:var(--gradient);
+  }
+  .nav-right{display:flex; align-items:center; gap:14px;}
+  .theme-toggle{
+    width:38px; height:38px; border-radius:9px; border:1px solid var(--border);
+    background:var(--surface); display:flex; align-items:center; justify-content:center;
+    cursor:pointer; color:var(--ink); font-size:15px; transition:border-color .2s ease;
+  }
+  .theme-toggle:hover{border-color:var(--accent);}
+  .nav-cta{
+    font-size:13px; font-weight:600; background:var(--gradient); color:var(--accent-ink);
+    padding:9px 16px; border-radius:8px; transition:opacity .2s ease;
+  }
+  .nav-cta:hover{opacity:0.88;}
+  .burger{display:none; background:none; border:none; color:var(--ink); font-size:20px; cursor:pointer;}
+  @media (max-width:860px){ nav.links{display:none;} .burger{display:block;} }
+  .mobile-menu{display:none; flex-direction:column; border-top:1px solid var(--border); background:var(--bg);}
+  .mobile-menu.open{display:flex;}
+  .mobile-menu a{padding:15px 32px; font-size:14px; color:var(--ink-dim); border-bottom:1px solid var(--border);}
+  .mobile-menu a.active{color:var(--accent); font-weight:600;}
+
+  /* ---------- HERO ---------- */
+  .hero{padding-top:160px; padding-bottom:70px; position:relative; overflow:hidden;}
+  .blob{position:absolute; border-radius:50%; filter:blur(70px); z-index:0; opacity:0.35; pointer-events:none;}
+  .blob-1{width:420px; height:420px; background:var(--accent); top:-140px; right:-80px;}
+  .blob-2{width:340px; height:340px; background:var(--accent-2); top:180px; right:260px; opacity:0.22;}
+  html[data-theme="dark"] .blob{opacity:0.22;}
+  .hero-grid{position:relative; z-index:1; display:grid; grid-template-columns:1.15fr 0.85fr; gap:52px; align-items:center;}
+  @media (max-width:900px){.hero-grid{grid-template-columns:1fr;}}
+  .hero-top{max-width:640px;}
+  .hero h1{font-size:clamp(32px,4.6vw,50px); line-height:1.1; color:var(--ink);}
+  .hero h1 .grad{background:var(--gradient); -webkit-background-clip:text; background-clip:text; color:transparent;}
+  .hero p.lede{margin-top:18px; max-width:56ch; color:var(--ink-dim); font-size:16.5px;}
+  .hero-actions{display:flex; gap:12px; margin-top:30px; flex-wrap:wrap;}
+
+  .photo-wrap{position:relative; display:flex; justify-content:center;}
+  .photo-ring{
+    width:280px; height:280px; border-radius:32px; padding:4px;
+    background:var(--gradient); box-shadow:var(--shadow-lg);
+  }
+  .photo-ring img{
+    width:100%; height:100%; object-fit:cover; border-radius:28px;
+    display:block; filter:grayscale(100%) contrast(1.05);
+  }
+  .photo-chip{
+    position:absolute; bottom:-16px; left:50%; transform:translateX(-50%);
+    background:var(--surface); border:1px solid var(--border); box-shadow:var(--shadow);
+    padding:9px 18px; border-radius:20px; font-family:var(--font-mono); font-size:12px;
+    display:flex; align-items:center; gap:8px; white-space:nowrap;
+  }
+  @media (max-width:900px){.photo-ring{width:220px; height:220px; margin-top:8px;}}
+  .btn{font-size:13.5px; font-weight:600; padding:12px 20px; border-radius:9px; display:inline-flex; align-items:center; gap:8px; transition:all .2s ease;}
+  .btn-primary{background:var(--gradient); color:var(--accent-ink); box-shadow:var(--shadow);}
+  .btn-primary:hover{opacity:0.92; transform:translateY(-1px);}
+  .btn-ghost{border:1px solid var(--border); color:var(--ink);}
+  .btn-ghost:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* ---------- TERMINAL WIDGET ---------- */
+  .term{
+    margin-top:56px; background:var(--surface); border:1px solid var(--border); border-radius:14px;
+    box-shadow:var(--shadow); overflow:hidden; max-width:620px;
+  }
+  .term-top{display:flex; align-items:center; gap:8px; padding:13px 16px; border-bottom:1px solid var(--border); background:var(--surface-2);}
+  .term-dot{
+    width:12px; height:12px; border-radius:50%; position:relative;
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+  .term-dot.red{background:#ff5f57;}
+  .term-dot.yellow{background:#febc2e;}
+  .term-dot.green{background:#28c840;}
+  .term-dot::after{
+    font-size:8px; line-height:1; color:rgba(0,0,0,0.55); font-weight:700;
+  }
+  .term-dot.red::after{content:"×";}
+  .term-dot.yellow::after{content:"−";}
+  .term-dot.green::after{content:"+";}
+  .term-top span.path{margin-left:8px; font-family:var(--font-mono); font-size:12px; color:var(--ink-dim);}
+  .term-body{padding:22px 22px 24px; font-family:var(--font-mono); font-size:13.5px; line-height:2; max-height:420px; overflow-y:auto;}
+  .term-body .prompt{background:var(--gradient); -webkit-background-clip:text; background-clip:text; color:transparent; font-weight:700;}
+  .term-body .line{color:var(--ink); display:block;}
+  .term-body .kw{color:var(--accent-2); font-weight:600;}
+  .term-body .str{color:var(--green);}
+  .term-body .com{color:var(--ink-dim); font-style:italic;}
+  .term-body .ret{color:var(--ink-dim); display:block; margin-bottom:10px;}
+  .term-body .err{color:#ff6b6b; display:block; margin-bottom:10px;}
+  .cursor{color:var(--accent); animation:blink 1.1s step-start infinite;}
+  @keyframes blink{ 50%{ opacity:0; } }
+  @media (prefers-reduced-motion: reduce){ .cursor{animation:none;} }
+  .term-body .status{display:inline-flex; align-items:center; gap:7px; color:var(--ink-dim); font-size:12px; margin-top:4px;}
+  .term-input-row{display:flex; align-items:center; gap:8px;}
+  .term-input{
+    flex:1; background:transparent; border:none; outline:none; color:var(--ink);
+    font-family:var(--font-mono); font-size:13.5px; padding:0; caret-color:var(--accent); min-width:0;
+  }
+  .term-input::placeholder{color:var(--ink-dim); opacity:0.6;}
+  .status-dot{width:6px; height:6px; border-radius:50%; background:var(--green); display:inline-block; box-shadow:0 0 0 3px color-mix(in srgb, var(--green) 20%, transparent);}
+
+  /* ---------- SECTION HEAD ---------- */
+  .sec-head{margin-bottom:44px; max-width:620px;}
+  .sec-head h2{font-size:clamp(23px,3vw,30px);}
+  .sec-head p{color:var(--ink-dim); margin-top:10px; font-size:14.5px;}
+  .rule{height:1px; background:var(--border);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid; grid-template-columns:1fr; gap:26px;}
+  .about-links{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
+  .about-links a{
+    font-family:var(--font-mono); font-size:12.5px; color:var(--ink); border:1px solid var(--border);
+    padding:8px 14px; border-radius:8px; transition:border-color .2s ease, color .2s ease;
+  }
+  .about-links a:hover{border-color:var(--accent); color:var(--accent);}
+
+  /* ---------- EXPERIENCE ---------- */
+  .exp-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:40px;
+    box-shadow:var(--shadow-lg); display:grid; grid-template-columns:220px 1fr; gap:40px;
+  }
+  @media (max-width:720px){.exp-card{grid-template-columns:1fr; padding:26px; gap:24px;}}
+
+  .exp-aside{display:flex; flex-direction:column; gap:6px;}
+  @media (max-width:720px){.exp-aside{padding-bottom:22px; border-bottom:1px solid var(--border);}}
+  .exp-aside .exp-role{font-size:18px; font-family:var(--font-display); font-weight:600; line-height:1.3;}
+  .exp-aside .exp-co{color:var(--accent); font-weight:500; font-size:14px; margin-top:2px;}
+  .exp-aside .exp-meta{font-size:12.5px; color:var(--ink-dim); margin-top:10px; line-height:1.6;}
+  .badge{
+    font-family:var(--font-mono); font-size:11px; color:var(--accent); border:1px solid var(--accent);
+    background:var(--accent-soft); padding:6px 12px; border-radius:20px; white-space:nowrap;
+    display:inline-block; width:fit-content; margin-top:16px;
+  }
+
+  .exp-main p.intro{color:var(--ink-dim); font-size:15px; margin-bottom:20px;}
+  .exp-list{display:flex; flex-direction:column; gap:13px;}
+  .exp-list li{list-style:none; display:flex; gap:12px; color:var(--ink-dim); font-size:14.5px;}
+  .exp-list li::before{content:"→"; color:var(--accent); flex-shrink:0;}
+  .exp-list b{color:var(--ink); font-weight:600;}
+  .tech-row{display:flex; flex-wrap:wrap; gap:8px; margin-top:24px;}
+  .tag{font-family:var(--font-mono); font-size:11px; color:var(--ink-dim); border:1px solid var(--border); padding:5px 10px; border-radius:6px;}
+
+  /* ---------- SKILLS ---------- */
+  .cap-list{display:flex; flex-direction:column; border:1px solid var(--border); border-radius:14px; overflow:hidden; background:var(--surface);}
+  .cap-row{display:grid; grid-template-columns:220px 1fr; gap:20px; padding:22px 26px; border-bottom:1px solid var(--border);}
+  .cap-row:last-child{border-bottom:none;}
+  @media (max-width:700px){.cap-row{grid-template-columns:1fr; gap:10px;}}
+  .cap-row h3{font-size:13.5px; color:var(--ink); font-family:var(--font-mono); font-weight:500;}
+  .tagset{display:flex; flex-wrap:wrap; gap:8px;}
+  .tagset span{font-size:12.5px; font-family:var(--font-mono); background:var(--surface-2); color:var(--ink-dim); padding:6px 10px; border-radius:6px;}
+
+  /* ---------- PROJECTS ---------- */
+  .proj-list{display:flex; flex-direction:column; gap:18px;}
+  .proj-card{
+    background:var(--surface); border:1px solid var(--border); border-radius:20px; padding:30px;
+    display:grid; grid-template-columns:1fr auto; gap:20px; align-items:start;
+    transition:box-shadow .2s ease, transform .2s ease, border-color .2s ease;
+  }
+  @media (max-width:640px){.proj-card{grid-template-columns:1fr; padding:22px;}}
+  .proj-card:hover{box-shadow:var(--shadow-lg); transform:translateY(-3px); border-color:var(--accent);}
+  .proj-main h3{font-size:17.5px; margin-bottom:6px;}
+  .proj-role{font-family:var(--font-mono); font-size:11.5px; color:var(--accent); margin-bottom:12px; display:block;}
+  .proj-main p.desc{color:var(--ink-dim); font-size:14.5px; margin-bottom:16px; max-width:60ch;}
+  .proj-stack{font-family:var(--font-mono); font-size:12.5px; color:var(--ink-dim); margin-bottom:10px;}
+  .proj-stack b{color:var(--ink); font-weight:600; font-family:var(--font-body);}
+  .proj-hi{list-style:none; display:flex; flex-direction:column; gap:8px;}
+  .proj-hi li{color:var(--ink-dim); font-size:13.5px; display:flex; gap:9px;}
+  .proj-hi li::before{content:"–"; color:var(--accent); flex-shrink:0;}
+  .proj-link{
+    align-self:start; font-size:12.5px; font-weight:600; color:var(--accent); border:1px solid var(--accent);
+    padding:9px 14px; border-radius:8px; white-space:nowrap; background:var(--accent-soft);
+  }
+  .proj-link:hover{background:var(--accent); color:var(--accent-ink);}
+
+  /* ---------- EDUCATION ---------- */
+  .edu-grid{display:grid; grid-template-columns:1.4fr 1fr; gap:20px;}
+  @media (max-width:800px){.edu-grid{grid-template-columns:1fr;}}
+  .edu-card, .lang-card{background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:28px;}
+  .edu-card h3{font-size:17px; margin-bottom:6px;}
+  .edu-meta{font-size:13px; color:var(--ink-dim); margin-bottom:3px;}
+  .edu-grade{margin-top:14px; display:inline-block; font-family:var(--font-mono); font-size:12px; color:var(--accent); border:1px solid var(--accent); background:var(--accent-soft); padding:6px 12px; border-radius:20px;}
+  .lang-row{display:flex; justify-content:space-between; padding:10px 0; border-bottom:1px solid var(--border); font-size:13.5px;}
+  .lang-row:last-child{border-bottom:none;}
+  .lang-row span:last-child{color:var(--ink-dim); font-family:var(--font-mono);}
+
+  /* ---------- CONTACT ---------- */
+  .contact-card{background:var(--surface); border:1px solid var(--border); border-radius:22px; padding:40px; box-shadow:var(--shadow-lg); position:relative; overflow:hidden;}
+  .contact-card::before{content:""; position:absolute; top:-80px; right:-80px; width:220px; height:220px; border-radius:50%; background:var(--gradient); opacity:0.12; filter:blur(50px);}
+  @media (max-width:640px){.contact-card{padding:26px;}}
+  .contact-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:44px; align-items:center;}
+  @media (max-width:800px){.contact-grid{grid-template-columns:1fr;}}
+  .contact-card h2{font-size:clamp(24px,3.2vw,32px);}
+  .contact-card .lede{color:var(--ink-dim); margin-top:14px; font-size:15px; max-width:44ch;}
+  .contact-list a, .contact-list .row{
+    display:flex; justify-content:space-between; padding:15px 0; border-bottom:1px solid var(--border);
+    font-size:13.5px; color:var(--ink);
+  }
+  .contact-list a:last-child{border-bottom:none;}
+  .contact-list span:first-child{color:var(--ink-dim); font-family:var(--font-mono);}
+  .contact-list a:hover{color:var(--accent);}
+
+  /* ---------- FOOTER ---------- */
+  footer{border-top:1px solid var(--border); padding:64px 0 36px;}
+  .foot-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:40px;}
+  @media (max-width:700px){.foot-grid{grid-template-columns:1fr; gap:28px;}}
+  .foot-brand{font-family:var(--font-display); font-weight:700; font-size:16px;}
+  .foot-tag{color:var(--ink-dim); font-size:13.5px; margin-top:10px; max-width:34ch;}
+  .foot-col h4{font-family:var(--font-mono); font-size:11.5px; letter-spacing:0.06em; text-transform:uppercase; color:var(--ink-dim); margin-bottom:14px; font-weight:500;}
+  .foot-col a{display:block; font-size:13.5px; color:var(--ink); padding:6px 0;}
+  .foot-col a:hover{color:var(--accent);}
+  .fine-print{margin-top:50px; padding-top:24px; border-top:1px solid var(--border); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px; font-family:var(--font-mono); font-size:11.5px; color:var(--ink-dim); opacity:0.8;}
+
+  .reveal{opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+  @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} }
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap nav-row">
+    <a href="#top" class="logo"><span class="mark">AK</span> Amirhossein Karimi</a>
+    <nav class="links">
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle color theme">🌙</button>
+      <a class="nav-cta" href="#contact">Get in touch</a>
+      <button class="burger" id="burgerBtn" aria-label="Toggle menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#education">Education</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-top">
+            <div class="eyebrow">Backend Developer · Turin, Italy</div>
+            <h1>Backend systems that hold up under <span class="grad">real load</span>.</h1>
+            <p class="lede">I write Python and Django, and build serverless data pipelines on AWS. Lately that's meant streaming files too large to fit in memory, and closing security gaps before they become incidents. Finishing my degree in Computer Engineering at Politecnico di Torino — looking for my first full-time backend role.</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#projects">See what I've built</a>
+              <a class="btn btn-ghost" href="#contact">Get in touch</a>
+            </div>
+          </div>
+        </div>
+        <div class="photo-wrap reveal">
+          <div class="photo-ring">
+            <img src="amirhossein.jpeg" alt="Amirhossein Karimi">
+          </div>
+          <div class="photo-chip">🟢 Open to work</div>
+        </div>
+      </div>
+
+      <div class="term reveal">
+        <div class="term-top">
+          <span class="term-dot red"></span><span class="term-dot yellow"></span><span class="term-dot green"></span>
+          <span class="path">python3 — amir.py</span>
+        </div>
+        <div class="term-body" id="termBody">
+          <span class="line"><span class="prompt">&gt;&gt;&gt;</span> <span class="kw">import</span> amir</span>
+          <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.whoami()</span>
+          <span class="ret"><span class="str">'backend developer, Turin'</span></span>
+          <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.stack</span>
+          <span class="ret">[<span class="str">'Python'</span>, <span class="str">'Django'</span>, <span class="str">'PostgreSQL'</span>, <span class="str">'AWS Lambda'</span>, <span class="str">'S3'</span>]</span>
+          <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.last_fix</span>
+          <span class="ret"><span class="str">'patched a zip-slip path traversal vuln before it shipped'</span></span>
+          <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.status <span class="com"># hiring managers welcome</span></span>
+          <span class="ret"><span class="str">'open_to_work'</span></span>
+          <div id="termLog"></div>
+          <div class="term-input-row">
+            <span class="prompt">&gt;&gt;&gt;</span>
+            <input type="text" id="termInput" class="term-input" autocomplete="off" spellcheck="false" placeholder="try: help" aria-label="Try a command, e.g. help">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap"><div class="rule"></div></div>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">About</div>
+        <h2>I like problems with a clear failure mode.</h2>
+      </div>
+      <div class="about-grid reveal">
+        <p style="color:var(--ink-dim); font-size:15.5px; max-width:70ch;">A file too large to fit in memory. An API that has to survive real traffic. A vulnerability nobody flagged yet. Most of what I know comes from a backend internship building geospatial data pipelines on AWS, and from personal projects where I push myself to ship something production-shaped — tested, containerized, documented — instead of stopping once it works on my machine. I moved through mining-adjacent curiosity into engineering the usual way: by finding out I liked debugging more than anything else.</p>
+        <div class="about-links">
+          <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener">GitHub ↗</a>
+          <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a href="mailto:amir.h.karimi.dev@gmail.com">Email ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Experience</div>
+        <h2>Where it got tested in production</h2>
+      </div>
+      <div class="exp-card reveal">
+        <div class="exp-aside">
+          <div class="exp-role">Python Developer Intern</div>
+          <div class="exp-co">Starview</div>
+          <div class="exp-meta">Turin, Italy<br>Nov 2025 – Jan 2026</div>
+          <div class="badge">100% coverage on my modules</div>
+        </div>
+        <div class="exp-main">
+          <p class="intro">Three months on a 12-function geospatial data pipeline that pulls multi-gigabyte satellite imagery straight out of S3 and processes it without ever loading a full file into memory.</p>
+          <ul class="exp-list">
+            <li><span>Built <b>3 of the pipeline's Lambda functions</b>, handling large <b>.tif and ZIP archives</b> with Python, rasterio, and VSIS3 streaming.</span></li>
+            <li><span>Designed a custom <b>S3SeekableFile</b> class to stream and seek large archives directly from S3, substantially cutting Lambda memory overhead.</span></li>
+            <li><span>Found and closed a <b>Zip Slip path traversal vulnerability</b> on my own initiative — then covered the fix with a full test suite built on <b>unittest.mock</b>, alongside a lazy-loading change that killed cold-start latency.</span></li>
+          </ul>
+          <div class="tech-row">
+            <span class="tag">Python</span><span class="tag">AWS Lambda</span><span class="tag">S3</span>
+            <span class="tag">rasterio</span><span class="tag">VSIS3</span><span class="tag">unittest.mock</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Education</div>
+        <h2>Background</h2>
+      </div>
+      <div class="edu-grid reveal">
+        <div class="edu-card">
+          <h3>B.Sc. Computer Engineering</h3>
+          <div class="edu-meta">Politecnico di Torino, Turin, Italy</div>
+          <div class="edu-meta">Sep 2022 – Dec 2026 (Expected)</div>
+          <div class="edu-grade">Grade: 26/30</div>
+        </div>
+        <div class="lang-card">
+          <div class="lang-row"><span>English</span><span>Fluent</span></div>
+          <div class="lang-row"><span>Italian</span><span>Basic</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Technical Skills</div>
+        <h2>What I use day to day</h2>
+        <p>Every item here is something I can talk through in interview detail — no padding.</p>
+      </div>
+      <div class="cap-list reveal">
+        <div class="cap-row">
+          <h3>Languages & Data</h3>
+          <div class="tagset"><span>Python</span><span>SQL</span><span>PostgreSQL</span></div>
+        </div>
+        <div class="cap-row">
+          <h3>Frameworks & Cloud</h3>
+          <div class="tagset"><span>Django</span><span>Django REST Framework</span><span>AWS Lambda</span><span>S3</span></div>
+        </div>
+        <div class="cap-row">
+          <h3>DevOps & Tools</h3>
+          <div class="tagset"><span>Docker</span><span>Docker Compose</span><span>GitHub Actions</span><span>Pytest</span><span>unittest.mock</span><span>Git</span><span>Swagger / OpenAPI</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Selected Projects</div>
+        <h2>What I've built on my own time</h2>
+      </div>
+      <div class="proj-list reveal">
+
+        <div class="proj-card">
+          <div class="proj-main">
+            <h3>Finance-Management API</h3>
+            <span class="proj-role">Personal Project</span>
+            <p class="desc">A fully containerized personal finance REST API with JWT authentication, complete CRUD for transactions and budgets, and auto-generated Swagger/OpenAPI docs.</p>
+            <div class="proj-stack"><b>Stack:</b> Django REST Framework · PostgreSQL · Docker Compose · Celery · Redis</div>
+            <ul class="proj-hi">
+              <li>Asynchronous budget alerts running on Celery + Redis task queues.</li>
+              <li>Full CI/CD pipeline via GitHub Actions, with a Pytest suite gating every push.</li>
+            </ul>
+          </div>
+          <a class="proj-link" href="https://github.com/Karimi-Amirhossein/CortexSys-Finance-Managment" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-main">
+            <h3>E-Commerce REST API</h3>
+            <span class="proj-role">Co-Developer, 2-Person Team</span>
+            <p class="desc">Backend for a full e-commerce flow — product catalog, shopping cart, and order management — with JWT authentication.</p>
+            <div class="proj-stack"><b>Stack:</b> Django REST Framework · PostgreSQL · Ruff</div>
+            <ul class="proj-hi">
+              <li>Ran the project on feature branches, conventional commits, and peer code review — a real team workflow, not a solo script.</li>
+              <li>Ruff-based quality checks enforced on every merge.</li>
+            </ul>
+          </div>
+          <a class="proj-link" href="https://github.com/Karimi-Amirhossein/E-Commerce-API" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+        <div class="proj-card">
+          <div class="proj-main">
+            <h3>Weather Report CLI</h3>
+            <span class="proj-role">Technical Assessment</span>
+            <p class="desc">A command-line tool built for an internship assessment, pulling live conditions for multiple cities from the OpenWeatherMap API.</p>
+            <div class="proj-stack"><b>Stack:</b> Python · REST API</div>
+            <ul class="proj-hi">
+              <li>Parses JSON responses into multi-city weather reports in one run.</li>
+              <li>Scores how comfortable each city's conditions actually feel with a custom Comfort Score algorithm.</li>
+            </ul>
+          </div>
+          <a class="proj-link" href="https://github.com/Karimi-Amirhossein/Starview-Weather-Project" target="_blank" rel="noopener">View on GitHub →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-card reveal">
+        <div class="contact-grid">
+          <div>
+            <div class="eyebrow">Contact</div>
+            <h2>Let's build something reliable.</h2>
+            <p class="lede">Open to Junior Backend Developer roles where reliability actually matters. I reply fast — reach out directly.</p>
+          </div>
+          <div class="contact-list">
+            <a href="mailto:amir.h.karimi.dev@gmail.com"><span>Email</span><span>amir.h.karimi.dev@gmail.com</span></a>
+            <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener"><span>LinkedIn</span><span>karimi-amirhossein</span></a>
+            <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener"><span>GitHub</span><span>Karimi-Amirhossein</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand">Amirhossein Karimi</div>
+        <p class="foot-tag">Backend developer in Turin, Italy — Python, Django, and serverless AWS pipelines.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Navigate</h4>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h4>Elsewhere</h4>
+        <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="mailto:amir.h.karimi.dev@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="fine-print">
+      <span>Turin, Italy</span>
+      <span>Plain HTML, CSS & JS — no framework required</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // theme: dark by default; toggle switches for this session (no persistence needed on a static page)
+  const root = document.documentElement;
+  const toggleBtn = document.getElementById('themeToggle');
+  root.setAttribute('data-theme', 'dark');
+  toggleBtn.textContent = '☀️';
+
+  toggleBtn.addEventListener('click', () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    root.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    toggleBtn.textContent = isDark ? '🌙' : '☀️';
+  });
+
+  // mobile menu
+  const burger = document.getElementById('burgerBtn');
+  const menu = document.getElementById('mobileMenu');
+  burger.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    burger.setAttribute('aria-expanded', isOpen);
+    burger.textContent = isOpen ? '✕' : '☰';
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    menu.classList.remove('open'); burger.textContent = '☰'; burger.setAttribute('aria-expanded', 'false');
+  }));
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, {threshold: 0.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // scroll-spy: highlight the nav link for the section currently in view
+  const navLinks = document.querySelectorAll('nav.links a, .mobile-menu a');
+  const sections = Array.from(navLinks)
+    .map(a => document.querySelector(a.getAttribute('href')))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+  };
+
+  let ticking = false;
+  const updateActive = () => {
+    ticking = false;
+    const triggerLine = window.innerHeight * 0.35; // section must reach ~35% down the viewport to count as "current"
+    let current = null;
+    for (const sec of sections) {
+      if (sec.getBoundingClientRect().top <= triggerLine) {
+        current = sec;
+      } else {
+        break;
+      }
+    }
+    // if we're near the bottom of the page, force the last section active
+    const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
+    if (atBottom) current = sections[sections.length - 1];
+
+    if (current) {
+      setActive(current.id);
+    } else {
+      navLinks.forEach(a => a.classList.remove('active')); // still in the hero — nothing active yet
+    }
+  };
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(updateActive); ticking = true; }
+  }, { passive: true });
+  window.addEventListener('resize', updateActive);
+  updateActive();
+
+  // interactive terminal — a tiny simulated "backend" reacting to commands
+  const termBody = document.getElementById('termBody');
+  const termLog = document.getElementById('termLog');
+  const termInput = document.getElementById('termInput');
+
+  const escapeHtml = (s) => s.replace(/[&<>"']/g, (c) => ({
+    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
+  }[c]));
+
+  const commands = {
+    help: () => `Available: whoami, stack, experience, projects, education, contact, clear`,
+    whoami: () => `'backend developer, Turin — Amirhossein Karimi'`,
+    stack: () => `['Python', 'Django', 'DRF', 'PostgreSQL', 'AWS Lambda', 'S3', 'Docker']`,
+    experience: () => `'Python Developer Intern @ Starview — geospatial data pipelines on AWS Lambda + S3'`,
+    projects: () => `['Finance-Management API', 'E-Commerce REST API', 'Weather Report CLI'] — see #projects`,
+    education: () => `'B.Sc. Computer Engineering, Politecnico di Torino — Dec 2026 (Expected)'`,
+    contact: () => `'amir.h.karimi.dev@gmail.com · github.com/Karimi-Amirhossein'`,
+  };
+
+  const runCommand = (raw) => {
+    const cmd = raw.trim();
+    const echo = document.createElement('span');
+    echo.className = 'line';
+    echo.innerHTML = `<span class="prompt">&gt;&gt;&gt;</span> ${escapeHtml(cmd)}`;
+    termLog.appendChild(echo);
+
+    if (cmd === '') return;
+
+    if (cmd === 'clear') {
+      termLog.innerHTML = '';
+      return;
+    }
+
+    const key = cmd.replace(/amir\.|\(\)|_/g, '').toLowerCase().trim();
+    const handler = commands[key];
+    const out = document.createElement('span');
+    if (handler) {
+      out.className = 'ret';
+      out.textContent = handler();
+    } else {
+      out.className = 'err';
+      out.textContent = `NameError: '${cmd}' is not defined — try 'help'`;
+    }
+    termLog.appendChild(out);
+  };
+
+  termInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      runCommand(termInput.value);
+      termInput.value = '';
+      termBody.scrollTop = termBody.scrollHeight;
+    }
+  });
+
+  document.querySelector('.term')?.addEventListener('click', () => termInput.focus());
+</script>
+
+</body>
+</html>
