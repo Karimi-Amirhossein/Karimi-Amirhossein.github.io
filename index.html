@@ -220,6 +220,8 @@
   }
   @media (max-width:720px){.exp-card{grid-template-columns:1fr; padding:26px; gap:24px;}}
 
+  .exp-card + .exp-card{margin-top:24px;}
+
   .exp-aside{display:flex; flex-direction:column; gap:6px;}
   @media (max-width:720px){.exp-aside{padding-bottom:22px; border-bottom:1px solid var(--border);}}
   .exp-aside .exp-role{font-size:18px; font-family:var(--font-display); font-weight:600; line-height:1.3;}
@@ -353,8 +355,8 @@
         <div>
           <div class="hero-top">
             <div class="eyebrow">Backend Developer · Turin, Italy</div>
-            <h1>Backend systems that hold up under <span class="grad">real load</span>.</h1>
-            <p class="lede">I write Python and Django, and build serverless data pipelines on AWS. Lately that's meant streaming files too large to fit in memory, and closing security gaps before they become incidents. Finishing my degree in Computer Engineering at Politecnico di Torino — looking for my first full-time backend role.</p>
+            <h1>I build backend systems with <span class="grad">Python and Django</span>.</h1>
+            <p class="lede">Most of what I've learned has come from actually building things — a data pipeline on AWS during an internship, a research tool that turns patient data into charts, and a few backend projects on my own time. I'm finishing my Computer Engineering degree at Politecnico di Torino and looking for my first full-time backend role.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#projects">See what I've built</a>
               <a class="btn btn-ghost" href="#contact">Get in touch</a>
@@ -379,7 +381,7 @@
           <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.whoami()</span>
           <span class="ret"><span class="str">'backend developer, Turin'</span></span>
           <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.stack</span>
-          <span class="ret">[<span class="str">'Python'</span>, <span class="str">'Django'</span>, <span class="str">'PostgreSQL'</span>, <span class="str">'AWS Lambda'</span>, <span class="str">'S3'</span>]</span>
+          <span class="ret">[<span class="str">'Python'</span>, <span class="str">'R'</span>, <span class="str">'Django'</span>, <span class="str">'PostgreSQL'</span>, <span class="str">'AWS Lambda'</span>, <span class="str">'S3'</span>]</span>
           <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.last_fix</span>
           <span class="ret"><span class="str">'patched a zip-slip path traversal vuln before it shipped'</span></span>
           <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.status <span class="com"># hiring managers welcome</span></span>
@@ -401,10 +403,10 @@
     <div class="wrap">
       <div class="sec-head reveal">
         <div class="eyebrow">About</div>
-        <h2>I like problems with a clear failure mode.</h2>
+        <h2>About me</h2>
       </div>
       <div class="about-grid reveal">
-        <p style="color:var(--ink-dim); font-size:15.5px; max-width:70ch;">A file too large to fit in memory. An API that has to survive real traffic. A vulnerability nobody flagged yet. Most of what I know comes from a backend internship building geospatial data pipelines on AWS, and from personal projects where I push myself to ship something production-shaped — tested, containerized, documented — instead of stopping once it works on my machine. I moved through mining-adjacent curiosity into engineering the usual way: by finding out I liked debugging more than anything else.</p>
+        <p style="color:var(--ink-dim); font-size:15.5px; max-width:70ch;">I'm finishing my Computer Engineering degree at Politecnico di Torino. Most of what I actually know how to do, I learned by doing it, not from a lecture slide. During my internship at Starview, I worked on a geospatial data pipeline on AWS — streaming huge satellite files without running out of memory, and fixing a security bug I found on my own. I'm also currently on a university research project that turns patient questionnaire data into clinical scores and charts, which is a different kind of problem but comes down to the same thing: making sure the output is actually right. Outside of work I build backend projects on my own time, mostly because I'd rather end up with something that runs — tested, containerized — than another half-finished tutorial repo.</p>
         <div class="about-links">
           <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener">GitHub ↗</a>
           <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener">LinkedIn ↗</a>
@@ -415,34 +417,58 @@
   </section>
 
   <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <div class="eyebrow">Experience</div>
-        <h2>Where it got tested in production</h2>
+<section id="experience">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="eyebrow">Experience</div>
+      <h2>Where the work shows up</h2>
+    </div>
+
+    <div class="exp-card reveal">
+      <div class="exp-aside">
+        <div class="exp-role">Software & Data Engineering Intern</div>
+        <div class="exp-co">Politecnico di Torino</div>
+        <div class="exp-meta">Turin, Italy<br>May 2026 – Present</div>
+        <div class="badge">13+ clinical instruments automated</div>
       </div>
-      <div class="exp-card reveal">
-        <div class="exp-aside">
-          <div class="exp-role">Python Developer Intern</div>
-          <div class="exp-co">Starview</div>
-          <div class="exp-meta">Turin, Italy<br>Nov 2025 – Jan 2026</div>
-          <div class="badge">100% coverage on my modules</div>
-        </div>
-        <div class="exp-main">
-          <p class="intro">Three months on a 12-function geospatial data pipeline that pulls multi-gigabyte satellite imagery straight out of S3 and processes it without ever loading a full file into memory.</p>
-          <ul class="exp-list">
-            <li><span>Built <b>3 of the pipeline's Lambda functions</b>, handling large <b>.tif and ZIP archives</b> with Python, rasterio, and VSIS3 streaming.</span></li>
-            <li><span>Designed a custom <b>S3SeekableFile</b> class to stream and seek large archives directly from S3, substantially cutting Lambda memory overhead.</span></li>
-            <li><span>Found and closed a <b>Zip Slip path traversal vulnerability</b> on my own initiative — then covered the fix with a full test suite built on <b>unittest.mock</b>, alongside a lazy-loading change that killed cold-start latency.</span></li>
-          </ul>
-          <div class="tech-row">
-            <span class="tag">Python</span><span class="tag">AWS Lambda</span><span class="tag">S3</span>
-            <span class="tag">rasterio</span><span class="tag">VSIS3</span><span class="tag">unittest.mock</span>
-          </div>
+      <div class="exp-main">
+        <p class="intro">Ongoing research collaboration between Politecnico di Torino and a hospital, turning patient-reported clinical questionnaire data into validated scores and visualizations.</p>
+        <ul class="exp-list">
+          <li><span>Built a <b>Python/R data-cleaning and QC pipeline</b> validating patient questionnaire responses across <b>13+ standardized clinical instruments</b> (HBI, PHQ-9, IBDQ, PSQI, and others).</span></li>
+          <li><span>Implemented <b>automated scoring and threshold-based categorization logic</b>, translating validated clinical formulas into reusable code.</span></li>
+          <li><span>Designed <b>structural QC checks</b> (missing values, out-of-range answers, duplicate submissions) to catch bad data before analysis.</span></li>
+          <li><span>Currently building a <b>Python visualization tool (matplotlib)</b> generating per-patient clinical score trend charts and treatment timelines.</span></li>
+        </ul>
+        <div class="tech-row">
+          <span class="tag">Python</span><span class="tag">R</span><span class="tag">Pandas</span>
+          <span class="tag">Matplotlib</span><span class="tag">Data Validation</span><span class="tag">Clinical Data Analysis</span>
         </div>
       </div>
     </div>
-  </section>
+
+    <div class="exp-card reveal">
+      <div class="exp-aside">
+        <div class="exp-role">Python Developer Intern</div>
+        <div class="exp-co">Starview</div>
+        <div class="exp-meta">Turin, Italy<br>Nov 2025 – Jan 2026</div>
+        <div class="badge">100% coverage on my modules</div>
+      </div>
+      <div class="exp-main">
+        <p class="intro">Three months on a 12-function geospatial data pipeline that pulls multi-gigabyte satellite imagery straight out of S3 and processes it without ever loading a full file into memory.</p>
+        <ul class="exp-list">
+          <li><span>Built <b>3 of the pipeline's Lambda functions</b>, handling large <b>.tif and ZIP archives</b> with Python, rasterio, and VSIS3 streaming.</span></li>
+          <li><span>Designed a custom <b>S3SeekableFile</b> class to stream and seek large archives directly from S3, substantially cutting Lambda memory overhead.</span></li>
+          <li><span>Found and closed a <b>Zip Slip path traversal vulnerability</b> on my own initiative — then covered the fix with a full test suite built on <b>unittest.mock</b>, alongside a lazy-loading change that killed cold-start latency.</span></li>
+        </ul>
+        <div class="tech-row">
+          <span class="tag">Python</span><span class="tag">AWS Lambda</span><span class="tag">S3</span>
+          <span class="tag">rasterio</span><span class="tag">VSIS3</span><span class="tag">unittest.mock</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
   <!-- EDUCATION -->
   <section id="education">
@@ -477,7 +503,7 @@
       <div class="cap-list reveal">
         <div class="cap-row">
           <h3>Languages & Data</h3>
-          <div class="tagset"><span>Python</span><span>SQL</span><span>PostgreSQL</span></div>
+          <div class="tagset"><span>Python</span><span>R</span><span>SQL</span><span>PostgreSQL</span></div>
         </div>
         <div class="cap-row">
           <h3>Frameworks & Cloud</h3>
@@ -680,8 +706,9 @@
   const commands = {
     help: () => `Available: whoami, stack, experience, projects, education, contact, clear`,
     whoami: () => `'backend developer, Turin — Amirhossein Karimi'`,
-    stack: () => `['Python', 'Django', 'DRF', 'PostgreSQL', 'AWS Lambda', 'S3', 'Docker']`,
-    experience: () => `'Python Developer Intern @ Starview — geospatial data pipelines on AWS Lambda + S3'`,
+    stack: () => `['Python', 'R', 'Django', 'DRF', 'PostgreSQL', 'AWS Lambda', 'S3', 'Docker']`,
+    experience: () => `['Software & Data Engineering Intern @ Politecnico di Torino — clinical data pipelines (May 2026–Present)', 
+    'Python Developer Intern @ Starview — geospatial data pipelines on AWS Lambda + S3']`,
     projects: () => `['Finance-Management API', 'E-Commerce REST API', 'Weather Report CLI'] — see #projects`,
     education: () => `'B.Sc. Computer Engineering, Politecnico di Torino — July 2026 (Expected)'`,
     contact: () => `'${atob('YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t')} · github.com/Karimi-Amirhossein'`,
