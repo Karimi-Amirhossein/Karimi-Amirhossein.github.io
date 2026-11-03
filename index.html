@@ -4,6 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Amirhossein Karimi — Backend Developer</title>
+
+<!-- Open Graph Tags -->
+<meta property="og:title" content="Amirhossein Karimi — Backend Developer">
+<meta property="og:description" content="Python backend developer building Django APIs and serverless AWS data pipelines. Turin, Italy.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://karimi-amirhossein.github.io/amirhossein.jpeg">
+<meta property="og:url" content="https://karimi-amirhossein.github.io/">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="alternate icon" href="favicon.svg">
 <meta name="description" content="Amirhossein Karimi — Python backend developer building Django APIs and serverless AWS data pipelines. Turin, Italy.">
@@ -109,7 +118,7 @@
     .nav-cta{padding:9px 12px; font-size:12px;}
   }
   @media (max-width:360px){
-    .nav-cta{display:none;} /* still reachable via the ☰ menu → Contact */
+    .nav-cta{display:none;}
   }
   .mobile-menu{display:none; flex-direction:column; border-top:1px solid var(--border); background:var(--bg);}
   .mobile-menu.open{display:flex;}
@@ -207,9 +216,17 @@
   /* ---------- ABOUT ---------- */
   .about-grid{display:grid; grid-template-columns:1fr; gap:26px;}
   .about-links{display:flex; gap:10px; flex-wrap:wrap; margin-top:24px;}
-  .about-links a{
-    font-family:var(--font-mono); font-size:12.5px; color:var(--ink); border:1px solid var(--border);
-    padding:8px 14px; border-radius:8px; transition:border-color .2s ease, color .2s ease;
+  .about-links a {
+    font-family: var(--font-mono); 
+    font-size: 12.5px; 
+    color: var(--ink); 
+    border: 1px solid var(--border);
+    padding: 8px 14px; 
+    border-radius: 8px; 
+    transition: border-color .2s ease, color .2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
   }
   .about-links a:hover{border-color:var(--accent); color:var(--accent);}
 
@@ -315,6 +332,14 @@
   .reveal.in{opacity:1; transform:translateY(0);}
   @media (prefers-reduced-motion: reduce){ .reveal{opacity:1; transform:none; transition:none;} }
 </style>
+
+<noscript>
+  <style>
+    /* If JS is disabled, ensure reveal elements are visible */
+    .reveal { opacity: 1; transform: none; transition: none; }
+  </style>
+</noscript>
+
 </head>
 <body>
 
@@ -356,10 +381,10 @@
           <div class="hero-top">
             <div class="eyebrow">Backend Developer · Turin, Italy</div>
             <h1>I build backend systems with <span class="grad">Python and Django</span>.</h1>
-            <p class="lede">Most of what I've learned has come from actually building things — a data pipeline on AWS during an internship, a research tool that turns patient data into charts, and a few backend projects on my own time. I'm finishing my Computer Engineering degree at Politecnico di Torino and looking for my first full-time backend role.</p>
+            <p class="lede">A lot of what I know I learned by building things — a data pipeline on AWS during an internship, a research tool that turns patient data into charts, and a few backend projects on my own time. I hold a B.Sc. in Computer Engineering from Politecnico di Torino, where I am currently pursuing my M.Sc. - Computer Engineering (Software specialization), and I'm looking for a Junior Backend Developer role.</p>
             <div class="hero-actions">
               <a class="btn btn-primary" href="#projects">See what I've built</a>
-              <a class="btn btn-ghost" href="#contact">Get in touch</a>
+              <a class="btn btn-ghost" href="Amirhossein_Karimi_CV.pdf" target="_blank">Download CV (PDF)</a>
             </div>
           </div>
         </div>
@@ -383,8 +408,8 @@
           <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.stack</span>
           <span class="ret">[<span class="str">'Python'</span>, <span class="str">'R'</span>, <span class="str">'Django'</span>, <span class="str">'PostgreSQL'</span>, <span class="str">'AWS Lambda'</span>, <span class="str">'S3'</span>]</span>
           <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.last_fix</span>
-          <span class="ret"><span class="str">'patched a zip-slip path traversal vuln before it shipped'</span></span>
-          <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.status <span class="com"># hiring managers welcome</span></span>
+          <span class="ret"><span class="str">'mitigated a zip-slip path traversal vuln'</span></span>
+          <span class="line"><span class="prompt">&gt;&gt;&gt;</span> amir.status <span class="com"># looking for junior roles</span></span>
           <span class="ret"><span class="str">'open_to_work'</span></span>
           <div id="termLog"></div>
           <div class="term-input-row">
@@ -406,11 +431,20 @@
         <h2>About me</h2>
       </div>
       <div class="about-grid reveal">
-        <p style="color:var(--ink-dim); font-size:15.5px; max-width:70ch;">I'm finishing my Computer Engineering degree at Politecnico di Torino. Most of what I actually know how to do, I learned by doing it, not from a lecture slide. During my internship at Starview, I worked on a geospatial data pipeline on AWS — streaming huge satellite files without running out of memory, and fixing a security bug I found on my own. I'm also currently on a university research project that turns patient questionnaire data into clinical scores and charts, which is a different kind of problem but comes down to the same thing: making sure the output is actually right. Outside of work I build backend projects on my own time, mostly because I'd rather end up with something that runs — tested, containerized — than another half-finished tutorial repo.</p>
+        <p style="color:var(--ink-dim); font-size:15.5px; max-width:70ch;">I recently completed my B.Sc. in Computer Engineering at Politecnico di Torino, and I'm now doing my M.Sc. with a software specialization. A lot of what I know I learned by building things. At Starview I worked on a geospatial data pipeline on AWS, streaming very large files from S3 without running out of memory and mitigating a security issue in the archive handling. I also worked on a university–hospital research project that turns patient questionnaire data into clinical scores and charts. It's a different kind of problem, but it comes down to the same thing: making sure the output is actually right. Outside of that I build backend projects on my own time, mostly because I'd rather end up with something that runs, tested and containerized, than another half-finished tutorial repo.</p>
         <div class="about-links">
-          <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener">GitHub ↗</a>
-          <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener">LinkedIn ↗</a>
-          <a href="mailto:amir.h.karimi.dev@gmail.com" class="js-mail" data-mail="YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t">Email ↗</a>
+          <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+            GitHub ↗
+          </a>
+          <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            LinkedIn ↗
+          </a>
+          <a href="#" class="js-mail" data-mail="YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            Email ↗
+          </a>
         </div>
       </div>
     </div>
@@ -428,16 +462,16 @@
       <div class="exp-aside">
         <div class="exp-role">Software & Data Engineering Intern</div>
         <div class="exp-co">Politecnico di Torino</div>
-        <div class="exp-meta">Turin, Italy<br>May 2026 – Present</div>
+        <div class="exp-meta">Turin, Italy<br>May 2026 – Nov 2026</div>
         <div class="badge">13+ clinical instruments automated</div>
       </div>
       <div class="exp-main">
-        <p class="intro">Ongoing research collaboration between Politecnico di Torino and a hospital, turning patient-reported clinical questionnaire data into validated scores and visualizations.</p>
+        <p class="intro">Research collaboration between Politecnico di Torino and a hospital, turning patient-reported clinical questionnaire data into validated scores and visualizations.</p>
         <ul class="exp-list">
           <li><span>Built a <b>Python/R data-cleaning and QC pipeline</b> validating patient questionnaire responses across <b>13+ standardized clinical instruments</b> (HBI, PHQ-9, IBDQ, PSQI, and others).</span></li>
           <li><span>Implemented <b>automated scoring and threshold-based categorization logic</b>, translating validated clinical formulas into reusable code.</span></li>
           <li><span>Designed <b>structural QC checks</b> (missing values, out-of-range answers, duplicate submissions) to catch bad data before analysis.</span></li>
-          <li><span>Currently building a <b>Python visualization tool (matplotlib)</b> generating per-patient clinical score trend charts and treatment timelines.</span></li>
+          <li><span>Built an internal <b>Python visualization tool (matplotlib)</b> generating per-patient clinical score trend charts and treatment timelines.</span></li>
         </ul>
         <div class="tech-row">
           <span class="tag">Python</span><span class="tag">R</span><span class="tag">Pandas</span>
@@ -454,11 +488,11 @@
         <div class="badge">100% coverage on my modules</div>
       </div>
       <div class="exp-main">
-        <p class="intro">Three months on a 12-function geospatial data pipeline that pulls multi-gigabyte satellite imagery straight out of S3 and processes it without ever loading a full file into memory.</p>
+        <p class="intro">Three months on a 12-function geospatial data pipeline that pulls multi-gigabyte geospatial files straight out of S3 and processes them while avoiding loading entire files into memory.</p>
         <ul class="exp-list">
           <li><span>Built <b>3 of the pipeline's Lambda functions</b>, handling large <b>.tif and ZIP archives</b> with Python, rasterio, and VSIS3 streaming.</span></li>
           <li><span>Designed a custom <b>S3SeekableFile</b> class to stream and seek large archives directly from S3, substantially cutting Lambda memory overhead.</span></li>
-          <li><span>Found and closed a <b>Zip Slip path traversal vulnerability</b> on my own initiative — then covered the fix with a full test suite built on <b>unittest.mock</b>, alongside a lazy-loading change that killed cold-start latency.</span></li>
+          <li><span><b>Mitigated a Zip Slip path traversal vulnerability</b> through independent research, and implemented lazy loading to reduce cold-start latency, with 100% unit test coverage via <b>unittest.mock</b>.</span></li>
         </ul>
         <div class="tech-row">
           <span class="tag">Python</span><span class="tag">AWS Lambda</span><span class="tag">S3</span>
@@ -478,13 +512,20 @@
         <h2>Background</h2>
       </div>
       <div class="edu-grid reveal">
-        <div class="edu-card">
-          <h3>B.Sc. Computer Engineering</h3>
-          <div class="edu-meta">Politecnico di Torino, Turin, Italy</div>
-          <div class="edu-meta">Sep 2022 – July 2026 (Expected)</div>
-          <div class="edu-grade">Grade: 26/30</div>
+        <div>
+          <div class="edu-card" style="margin-bottom: 20px;">
+            <h3>M.Sc. - Computer Engineering (Software specialization)</h3>
+            <div class="edu-meta">Politecnico di Torino, Turin, Italy</div>
+            <div class="edu-meta">Sep 2026 – Present</div>
+          </div>
+          <div class="edu-card">
+            <h3>B.Sc. Computer Engineering</h3>
+            <div class="edu-meta">Politecnico di Torino, Turin, Italy</div>
+            <div class="edu-meta">Sep 2022 – Nov 2026</div>
+          </div>
         </div>
         <div class="lang-card">
+          <div class="lang-row"><span>Persian</span><span>Native</span></div>
           <div class="lang-row"><span>English</span><span>Fluent</span></div>
           <div class="lang-row"><span>Italian</span><span>Basic</span></div>
         </div>
@@ -507,11 +548,11 @@
         </div>
         <div class="cap-row">
           <h3>Frameworks & Cloud</h3>
-          <div class="tagset"><span>Django</span><span>Django REST Framework</span><span>AWS Lambda</span><span>S3</span></div>
+          <div class="tagset"><span>Django</span><span>Django REST Framework</span><span>Celery</span><span>Pandas</span><span>Matplotlib</span><span>AWS Lambda</span><span>S3</span></div>
         </div>
         <div class="cap-row">
           <h3>DevOps & Tools</h3>
-          <div class="tagset"><span>Docker</span><span>Docker Compose</span><span>GitHub Actions</span><span>Pytest</span><span>unittest.mock</span><span>Git</span><span>Swagger / OpenAPI</span></div>
+          <div class="tagset"><span>Docker</span><span>Docker Compose</span><span>GitHub Actions</span><span>Redis</span><span>Pytest</span><span>unittest.mock</span><span>Git</span><span>Swagger / OpenAPI</span></div>
         </div>
       </div>
     </div>
@@ -545,10 +586,10 @@
             <h3>E-Commerce REST API</h3>
             <span class="proj-role">Co-Developer, 2-Person Team</span>
             <p class="desc">Backend for a full e-commerce flow — product catalog, shopping cart, and order management — with JWT authentication.</p>
-            <div class="proj-stack"><b>Stack:</b> Django REST Framework · PostgreSQL · Ruff</div>
+            <div class="proj-stack"><b>Stack:</b> Django REST Framework · PostgreSQL · Docker</div>
             <ul class="proj-hi">
-              <li>Ran the project on feature branches, conventional commits, and peer code review — a real team workflow, not a solo script.</li>
-              <li>Ruff-based quality checks enforced on every merge.</li>
+              <li>Containerized the complete infrastructure with Docker and PostgreSQL.</li>
+              <li>Integrated auto-generated OpenAPI documentation via drf-spectacular.</li>
             </ul>
           </div>
           <a class="proj-link" href="https://github.com/Karimi-Amirhossein/E-Commerce-API" target="_blank" rel="noopener">View on GitHub →</a>
@@ -583,7 +624,7 @@
             <p class="lede">Open to Junior Backend Developer roles where reliability actually matters. I reply fast — reach out directly.</p>
           </div>
           <div class="contact-list">
-            <a href="mailto:amir.h.karimi.dev@gmail.com" class="js-mail js-mail-full" data-mail="YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t"><span>Email</span><span class="js-mail-text">···</span></a>
+            <a href="#" class="js-mail js-mail-full" data-mail="YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t"><span>Email</span><span class="js-mail-text"><noscript>amir.h.karimi.dev [at] gmail.com</noscript></span></a>
             <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener"><span>LinkedIn</span><span>karimi-amirhossein</span></a>
             <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener"><span>GitHub</span><span>Karimi-Amirhossein</span></a>
           </div>
@@ -614,7 +655,7 @@
         <h4>Elsewhere</h4>
         <a href="https://github.com/Karimi-Amirhossein" target="_blank" rel="noopener">GitHub</a>
         <a href="https://www.linkedin.com/in/karimi-amirhossein/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="mailto:amir.h.karimi.dev@gmail.com" class="js-mail" data-mail="YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t">Email</a>
+        <a href="#" class="js-mail" data-mail="YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t">Email</a>
       </div>
     </div>
     <div class="fine-print">
@@ -668,7 +709,7 @@
   let ticking = false;
   const updateActive = () => {
     ticking = false;
-    const triggerLine = window.innerHeight * 0.35; // section must reach ~35% down the viewport to count as "current"
+    const triggerLine = window.innerHeight * 0.35; 
     let current = null;
     for (const sec of sections) {
       if (sec.getBoundingClientRect().top <= triggerLine) {
@@ -677,14 +718,13 @@
         break;
       }
     }
-    // if we're near the bottom of the page, force the last section active
     const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 4;
     if (atBottom) current = sections[sections.length - 1];
 
     if (current) {
       setActive(current.id);
     } else {
-      navLinks.forEach(a => a.classList.remove('active')); // still in the hero — nothing active yet
+      navLinks.forEach(a => a.classList.remove('active')); 
     }
   };
 
@@ -694,7 +734,7 @@
   window.addEventListener('resize', updateActive);
   updateActive();
 
-  // interactive terminal — a tiny simulated "backend" reacting to commands
+  // interactive terminal 
   const termBody = document.getElementById('termBody');
   const termLog = document.getElementById('termLog');
   const termInput = document.getElementById('termInput');
@@ -706,11 +746,11 @@
   const commands = {
     help: () => `Available: whoami, stack, experience, projects, education, contact, clear`,
     whoami: () => `'backend developer, Turin — Amirhossein Karimi'`,
-    stack: () => `['Python', 'R', 'Django', 'DRF', 'PostgreSQL', 'AWS Lambda', 'S3', 'Docker']`,
-    experience: () => `['Software & Data Engineering Intern @ Politecnico di Torino — clinical data pipelines (May 2026–Present)', 
+    stack: () => `['Python', 'R', 'Django', 'PostgreSQL', 'AWS Lambda', 'S3']`,
+    experience: () => `['Software & Data Engineering Intern @ Politecnico di Torino (May 2026–Nov 2026)',  
     'Python Developer Intern @ Starview — geospatial data pipelines on AWS Lambda + S3']`,
     projects: () => `['Finance-Management API', 'E-Commerce REST API', 'Weather Report CLI'] — see #projects`,
-    education: () => `'B.Sc. Computer Engineering, Politecnico di Torino — July 2026 (Expected)'`,
+    education: () => `'M.Sc. Computer Engineering (Software specialization) & B.Sc. Computer Engineering, Politecnico di Torino'`,
     contact: () => `'${atob('YW1pci5oLmthcmltaS5kZXZAZ21haWwuY29t')} · github.com/Karimi-Amirhossein'`,
   };
 
@@ -751,7 +791,7 @@
 
   document.querySelector('.term')?.addEventListener('click', () => termInput.focus());
 
-  // de-obfuscate email links (kept out of the raw HTML/source as plain text to cut down on scraper spam)
+  // de-obfuscate email links
   document.querySelectorAll('.js-mail').forEach(a => {
     const email = atob(a.dataset.mail);
     a.addEventListener('click', (e) => {
